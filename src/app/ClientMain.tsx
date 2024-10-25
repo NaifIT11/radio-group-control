@@ -34,8 +34,8 @@ function MainHeader({
 }) {
   return (
     <div className="space-y-2">
-      <h1 className="text-xl">Main Form</h1>
-      <p className="text-sm">choose a one of the following</p>
+      <h1 className="text-xl">{title}</h1>
+      <p className="text-sm">{description}</p>
     </div>
   );
 }
