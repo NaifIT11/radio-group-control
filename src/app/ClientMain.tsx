@@ -8,14 +8,14 @@ export default function Main() {
   return (
     <div className="flex flex-col gap-3 rounded border border-indigo-500 p-4">
         <MainHeader title="Main Form" description="choose one of the follwing" />
-        <div className="flex flex-col gap-3">
-            {radioOptions.map((radioOption => (
+        <form className="flex flex-col gap-3">
+           {radioOptions.map((radioOption => (
                 <div className="flex justify-between items-center cursor-pointer">
                     <label htmlFor={radioOption}>{radioOption}</label>
                     <input type="radio" name="company" value={radioOption} onChange={(e) => setCompany(e.target.value)} id={radioOption} className="accent-indigo-500" />
                 </div>
             )))}
-        </div>
+        </form>
     </div>
   );
 }
