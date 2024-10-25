@@ -7,9 +7,9 @@ export default function Main() {
         <MainHeader title="Main Form" description="choose one of the follwing" />
         <div className="flex flex-col gap-3">
             {radioOptions.map((radioOption => (
-                <div className="flex justify-between items-center">
-                    <label htmlFor="option">{radioOption}</label>
-                    
+                <div className="flex justify-between items-center cursor-pointer">
+                    <label htmlFor={radioOption}>{radioOption}</label>
+                    <input type="radio" name="company" id={radioOption} className="accent-indigo-500" />
                 </div>
             )))}
         </div>
