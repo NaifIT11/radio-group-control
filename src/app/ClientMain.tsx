@@ -71,3 +71,5 @@ const RadioInput = forwardRef<HTMLInputElement, RadioButtonProps>(
     );
   }
 );
+
+RadioInput.displayName = "RadioInput"; 
