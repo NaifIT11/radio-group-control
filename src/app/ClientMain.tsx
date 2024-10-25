@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { forwardRef, useState } from "react";
 
 export default function Main() {
   const radioOptions = ["google" , "amazon" , "microsoft"];
@@ -14,10 +14,7 @@ export default function Main() {
         <MainHeader title="Main Form" description="choose one of the follwing" />
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
            {radioOptions.map((radioOption => (
-                <label htmlFor={radioOption} key={radioOption} className="flex has-[:checked]:text-indigo-500 has-[:checked]:border-indigo-200 border p-3 rounded justify-between items-center cursor-pointer">
-                    <span className="text-md">{radioOption}</span>
-                    <input type="radio" name="company" value={radioOption} onChange={(e) => setCompany(e.target.value)} id={radioOption} className="cursor-pointer accent-indigo-500" />
-                </label>
+                <RadioInput key={radioOption} label={radioOption} value={company} onValueChange={setCompany} />
             )))}
             <button className="self-end font-medium text-white bg-indigo-500 hover:bg-indigo-600 rounded px-4 py-2">submit</button>
         </form>
@@ -39,3 +36,32 @@ function MainHeader({
     </div>
   );
 }
+
+
+interface RadioButtonProps {
+  label: string;
+  value: string;
+  onValueChange: (value: string) => void;
+}
+
+const RadioInput = forwardRef<HTMLInputElement, RadioButtonProps>(
+  ({ label, value, onValueChange }, ref) => {
+    return (
+      <label 
+        htmlFor={value} 
+        className="flex has-[:checked]:text-indigo-500 has-[:checked]:border-indigo-200 border p-3 rounded justify-between items-center cursor-pointer"
+      >
+        <span className="text-md">{label}</span>
+        <input 
+          type="radio" 
+          name="company" 
+          value={value} 
+          onChange={() => onValueChange(value)} 
+          id={value} 
+          ref={ref} 
+          className="cursor-pointer accent-indigo-500" 
+        />
+      </label>
+    );
+  }
+);
