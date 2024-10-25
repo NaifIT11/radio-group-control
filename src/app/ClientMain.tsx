@@ -5,16 +5,20 @@ import { useState } from "react";
 export default function Main() {
   const radioOptions = ["google" , "amazon" , "microsoft"];
   const [company  , setCompany] = useState<string>("");
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    console.log({company})
+  }
   return (
     <div className="flex flex-col gap-3 rounded border border-indigo-500 p-4">
         <MainHeader title="Main Form" description="choose one of the follwing" />
-        <form className="flex flex-col gap-3">
+        <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
            {radioOptions.map((radioOption => (
                 <div className="flex justify-between items-center cursor-pointer">
                     <label htmlFor={radioOption}>{radioOption}</label>
                     <input type="radio" name="company" value={radioOption} onChange={(e) => setCompany(e.target.value)} id={radioOption} className="accent-indigo-500" />
                 </div>
             )))}
+            <button className="font-medium text-white bg-indigo-500 hover:bg-indigo-600 rounded px-4 py-2">submit</button>
         </form>
     </div>
   );
