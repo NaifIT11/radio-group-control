@@ -14,10 +14,10 @@ export default function Main() {
         <MainHeader title="Main Form" description="choose one of the follwing" />
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
            {radioOptions.map((radioOption => (
-                <div className="flex justify-between items-center cursor-pointer">
-                    <label htmlFor={radioOption}>{radioOption}</label>
+                <label htmlFor={radioOption} className="flex justify-between items-center cursor-pointer">
+                    <span className="text-md">{radioOption}</span>
                     <input type="radio" name="company" value={radioOption} onChange={(e) => setCompany(e.target.value)} id={radioOption} className="accent-indigo-500" />
-                </div>
+                </label>
             )))}
             <button className="self-end font-medium text-white bg-indigo-500 hover:bg-indigo-600 rounded px-4 py-2">submit</button>
         </form>
