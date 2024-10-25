@@ -14,7 +14,7 @@ export default function Main() {
         <MainHeader title="Main Form" description="choose one of the follwing" />
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
            {radioOptions.map((radioOption => (
-                <label htmlFor={radioOption} key={radioOption} className="flex has-[:checked]:text-indigo-500 justify-between items-center cursor-pointer">
+                <label htmlFor={radioOption} key={radioOption} className="flex has-[:checked]:text-indigo-500 has-[:checked]:border-indigo-200 border p-3 rounded justify-between items-center cursor-pointer">
                     <span className="text-md">{radioOption}</span>
                     <input type="radio" name="company" value={radioOption} onChange={(e) => setCompany(e.target.value)} id={radioOption} className="cursor-pointer accent-indigo-500" />
                 </label>
